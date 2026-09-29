@@ -1,0 +1,39 @@
+# Бинарники и объектные файлы
+*.exe
+*.out
+*.obj
+*.o
+*.a
+*.so
+*.dll
+*.lib
+*.pdb
+*.ilk
+*.exp
+
+# Сборка
+build/
+out/
+bin/
+Debug/
+Release/
+x64/
+
+# VS Code
+.vscode/
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# Visual Studio
+.vs/
+*.vcxproj.user
+
+# Временные и логи
+*.log
+*.tmp
+*.cache
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
