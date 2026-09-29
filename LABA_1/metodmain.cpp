@@ -7,6 +7,7 @@
 
 #include "Shellsort.h"
 #include "HeapSort.h"
+#include "Trie.h"
 
 
 
@@ -36,7 +37,26 @@ long long algoritmforHeapsort(std::vector<int>& source, int iterations) {
         total += std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
     }
     return total;
-}   
+}  
+
+
+// алгоритм подсчета времени ПОИСКА по Бору
+long long algoritmforTriefind(std::vector<int>& source, int iterations) {
+    long long total = 0;
+    Trie trie(source);
+
+    for (int i = 0; i < source.size(); ++i) {
+        auto start = std::chrono::high_resolution_clock::now();
+
+        for (int x : source) {
+            trie.search(source[i]);
+        }
+
+        auto end = std::chrono::high_resolution_clock::now();
+        total += std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
+    }
+    return total;
+}  
 
 
 
@@ -88,9 +108,10 @@ int main() {
     for (int i = 0; i < 55; ++i) { std::cout << "-";}
     std::cout << '\n';
     std::cout << "| Время сортировки, t с | " << totaltime_Shell_N1 << " | " << totaltime_Shell_N2 << " | " << totaltime_Shell_N3 << " |" << std::endl;
-
     for (int i = 0; i < 55; ++i) { std::cout << "-";}
-
+    std::cout << std::endl;
+    std::cout << std::endl;
+    std::cout << std::endl;
 
 
     // подсчет пирамиды
@@ -110,6 +131,32 @@ int main() {
     for (int i = 0; i < 55; ++i) { std::cout << "-";}
     std::cout << '\n';
     std::cout << "| Время сортировки, t с | " << totaltime_Heap_N1 << " | " << totaltime_Heap_N2 << " | " << totaltime_Heap_N3 << " |" << std::endl;
+    for (int i = 0; i < 55; ++i) { std::cout << "-";}
+    std::cout << std::endl;
+    std::cout << std::endl;
+    std::cout << std::endl;
+
+
+
+
+
+        // подсчет Бора
+    double totaltime_Bora_N1 = algoritmforTriefind(sourceArrayN_1, 1) / 1'000'000.0;
+    double totaltime_Bora_N2 = algoritmforTriefind(sourceArrayN_2, 1) / 1'000'000.0;
+    double totaltime_Bora_N3 = algoritmforTriefind(sourceArrayN_3, 1) / 1'000'000.0;
+
+
+        // Вывод Бора 
+    std::cout << "                      Результаты поиска" << "\n";
+    for (int i = 0; i < 55; ++i) { std::cout << "-";}
+    std::cout << '\n';
+    std::cout << "| Метод сортировки | " << "метод Бора                     |" << std::endl;
+    for (int i = 0; i < 55; ++i) { std::cout << "-";}
+    std::cout << '\n';
+    std::cout << "| Количество элементов, N | " << N1 << " | " << N2 << " | " << N3 << " |" << std::endl;
+    for (int i = 0; i < 55; ++i) { std::cout << "-";}
+    std::cout << '\n';
+    std::cout << "| Время сортировки, t с | " << totaltime_Bora_N1 << " | " << totaltime_Bora_N2 << " | " << totaltime_Bora_N3 << " |" << std::endl;
 
     for (int i = 0; i < 55; ++i) { std::cout << "-";}
 }
